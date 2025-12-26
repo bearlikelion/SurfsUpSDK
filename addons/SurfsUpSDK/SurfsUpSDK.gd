@@ -109,7 +109,8 @@ func _get_all_dependencies_recursive(resource_path: String, visited: Dictionary 
 
 	elif resource_path.ends_with(".png") or resource_path.ends_with(".jpg") or resource_path.ends_with(".jpeg") or resource_path.ends_with(".webp") \
 	or resource_path.ends_with(".svg") or resource_path.ends_with(".exr") or resource_path.ends_with(".hdr") \
-	or resource_path.ends_with(".wav") or resource_path.ends_with(".mp3") or resource_path.ends_with(".ogg"):
+	or resource_path.ends_with(".wav") or resource_path.ends_with(".mp3") or resource_path.ends_with(".ogg") \
+	or resource_path.ends_with(".gdshader"):
 		# Image and audio files need their import files and imported resources
 		if FileAccess.file_exists(resource_path):
 			# Include the .import file
