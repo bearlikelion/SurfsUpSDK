@@ -6,10 +6,15 @@ title: "Overview"
 
 This is the documentation site for creating custom levels in [SurfsUp](https://store.steampowered.com/app/3454830/SurfsUp/)
 
+## Requirements
+* **Godot 4.5.1** - This SDK requires Godot 4.5.1+
+* **Blender**  - There are some .blend files from SurfsUp Source Code that need to compile to GLB
+
 ## Getting Started
 * Download, Fork, or Git Clone the [SurfsUpSDK Project](https://github.com/bearlikelion/SurfsUpSDK)
-* Download [Godot v4.4.1](https://godotengine.org/download/archive/4.4.1-stable/)
-* Open the `project.godot` file
+* Download [Godot v4.5.1](https://godotengine.org/download/archive/4.5.1-stable/) or newer
+* Download and Install [Blender LTS](https://www.blender.org/download/lts/)
+* Open the `project.godot` filet
 * Rename/duplicate `test_level.tscn` to your map's name
 
 ## Topics

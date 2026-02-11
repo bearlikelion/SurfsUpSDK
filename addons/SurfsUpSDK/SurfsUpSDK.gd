@@ -1,11 +1,18 @@
 @tool
+class_name SurfsUpSDKPlugin
 extends EditorPlugin
+
+const REQUIRED_GODOT_VERSION: String = "4.5.1"
+const PLUGIN_VERSION: String = "1.1"
 
 var dir_dialog: FileDialog
 var surfsup_menu: PopupMenu = PopupMenu.new()
 var export_button: Button
 
-func _enter_tree():
+
+# Called when the plugin enters the editor scene tree
+# Sets up the menu items, file dialogs, and toolbar buttons
+func _enter_tree() -> void:
 	surfsup_menu.add_item("Set Maps Directory", 0)
 	surfsup_menu.add_item("Export Current Scene", 1)
 	surfsup_menu.id_pressed.connect(_on_menu_option)
@@ -32,15 +39,37 @@ func _enter_tree():
 	export_button.connect("pressed", Callable(self, "_export_current_scene_to_pck"))
 	add_control_to_container(CONTAINER_TOOLBAR, export_button)
 
+	_check_godot_version()
 
-func _exit_tree():
+
+# Called when the plugin exits the editor scene tree
+# Cleans up UI elements and frees resources
+func _exit_tree() -> void:
 	remove_tool_menu_item("[SurfsUp] SDK Tools")
 	remove_control_from_container(EditorPlugin.CONTAINER_TOOLBAR, export_button)
 	if dir_dialog:
 		dir_dialog.queue_free()
 
 
-func _on_menu_option(id):
+# Checks if the current Godot version meets minimum requirements
+func _check_godot_version() -> void:
+	var version_info: Dictionary = Engine.get_version_info()
+	var current_version: String = "%d.%d.%d" % [version_info.major, version_info.minor, version_info.patch]
+	var required_parts: PackedStringArray = REQUIRED_GODOT_VERSION.split(".")
+	var current_parts: PackedStringArray = current_version.split(".")
+
+	for i in range(min(required_parts.size(), current_parts.size())):
+		var required: int = int(required_parts[i])
+		var current: int = int(current_parts[i])
+		if current < required:
+			push_warning("SurfsUpSDK requires Godot %s or newer. Current version: %s" % [REQUIRED_GODOT_VERSION, current_version])
+			return
+		elif current > required:
+			return
+
+
+# Handles menu item selection from the SurfsUp SDK Tools menu
+func _on_menu_option(id: int) -> void:
 	match id:
 		0:
 			dir_dialog.popup_centered_ratio()
@@ -48,12 +77,15 @@ func _on_menu_option(id):
 			_export_current_scene_to_pck()
 
 
-func _on_directory_selected(dir_path: String):
+# Saves the selected maps directory to project settings
+func _on_directory_selected(dir_path: String) -> void:
 	ProjectSettings.set_setting("surfs_up/maps_directory", dir_path)
 	ProjectSettings.save()
-	print("Maps directory set to: %s" % dir_path)
+	print("[SurfsUpSDK] Maps directory set to: %s" % dir_path)
 
 
+# Extracts the actual file path from a dependency string
+# Handles different dependency string formats used by Godot
 func _extract_path_from_dependency(dep: String) -> String:
 	if dep.contains("::::"):
 		return dep.split("::::")[1]
@@ -65,6 +97,8 @@ func _extract_path_from_dependency(dep: String) -> String:
 		return ""
 
 
+# Recursively collects all dependencies for a given resource
+# Handles scenes, 3D models, textures, audio, shaders, and their import files
 func _get_all_dependencies_recursive(resource_path: String, visited: Dictionary = {}) -> Array:
 	visited[resource_path] = true
 	var all_deps = []
@@ -142,7 +176,9 @@ func _get_all_dependencies_recursive(resource_path: String, visited: Dictionary 
 	return all_deps
 
 
-func _scan_node_and_children(node: Node, all_deps: Array, visited: Dictionary):
+# Scans a node and its children for resource dependencies
+# Particularly useful for MeshInstance3D and GeometryInstance3D nodes
+func _scan_node_and_children(node: Node, all_deps: Array, visited: Dictionary) -> void:
 	if node is MeshInstance3D:
 		_scan_resource_for_dependencies(node, all_deps, visited)
 	elif node is GeometryInstance3D and node.material_override != null:
@@ -152,7 +188,9 @@ func _scan_node_and_children(node: Node, all_deps: Array, visited: Dictionary):
 		_scan_node_and_children(child, all_deps, visited)
 
 
-func _scan_resource_for_dependencies(resource, all_deps: Array, visited: Dictionary):
+# Scans a resource for dependencies (textures, shaders, materials, etc.)
+# Handles various material types and their texture dependencies
+func _scan_resource_for_dependencies(resource, all_deps: Array, visited: Dictionary) -> void:
 	if resource == null:
 		return
 
@@ -214,50 +252,71 @@ func _scan_resource_for_dependencies(resource, all_deps: Array, visited: Diction
 			_scan_resource_for_dependencies(item, all_deps, visited)
 
 
-func _export_current_scene_to_pck():
-	var maps_dir = ProjectSettings.get_setting("surfs_up/maps_directory", "")
+# Exports the currently open scene to a PCK file in the configured maps directory
+# Collects all dependencies and packages them for use in SurfsUp
+func _export_current_scene_to_pck() -> void:
+	print("[SurfsUpSDK] Starting export process...")
+
+	var maps_dir: String = ProjectSettings.get_setting("surfs_up/maps_directory", "")
 	if maps_dir == "":
-		push_error("Maps directory is not set.")
+		push_error("[SurfsUpSDK] Maps directory is not set. Use 'Project -> Tools -> [SurfsUp] SDK Tools -> Set Maps Directory' first.")
 		return
 
-	var editor_interface = get_editor_interface()
-	var edited_scene = editor_interface.get_edited_scene_root()
+	if not DirAccess.dir_exists_absolute(maps_dir):
+		push_error("[SurfsUpSDK] Maps directory does not exist: %s" % maps_dir)
+		return
+
+	var editor_interface: EditorInterface = get_editor_interface()
+	var edited_scene: Node = editor_interface.get_edited_scene_root()
 	if edited_scene == null:
-		push_error("No scene is currently open.")
+		push_error("[SurfsUpSDK] No scene is currently open. Please open a scene to export.")
 		return
 
-	var scene_path = edited_scene.scene_file_path
+	var scene_path: String = edited_scene.scene_file_path
 	if not FileAccess.file_exists(scene_path):
-		push_error("Scene file does not exist: %s" % scene_path)
+		push_error("[SurfsUpSDK] Scene file does not exist: %s" % scene_path)
 		return
+
+	# Validate scene is in Levels directory
+	if not scene_path.contains("/Levels/"):
+		push_warning("[SurfsUpSDK] Scene should be in the /Levels/ directory for proper loading in-game.")
 
 	# Save scene before export
-	if editor_interface.save_scene() != 0:
-		push_error("Failed to save the current scene.")
+	print("[SurfsUpSDK] Saving scene...")
+	if editor_interface.save_scene() != OK:
+		push_error("[SurfsUpSDK] Failed to save the current scene. Please save manually and try again.")
 		return
 
 	# Start packing
-	var pck_path = maps_dir.path_join(scene_path.get_file().get_basename() + ".pck")
-	var packer = PCKPacker.new()
-	var result = packer.pck_start(pck_path)
+	var scene_name: String = scene_path.get_file().get_basename()
+	var pck_path: String = maps_dir.path_join(scene_name + ".pck")
+
+	print("[SurfsUpSDK] Export target: %s" % pck_path)
+	print("[SurfsUpSDK] Map name will be: %s" % scene_name)
+
+	var packer: PCKPacker = PCKPacker.new()
+	var result: int = packer.pck_start(pck_path)
 	if result != OK:
-		push_error("Failed to start PCK pack: %s" % pck_path)
+		push_error("[SurfsUpSDK] Failed to start PCK packing: %s (Error code: %d)" % [pck_path, result])
 		return
 
-	print("Collecting all dependencies for: %s" % scene_path)
+	print("[SurfsUpSDK] Collecting dependencies for: %s" % scene_path)
 
-	var visited = {}
+	var visited: Dictionary = {}
 	visited[scene_path] = true
-	var all_files = [scene_path]
+	var all_files: Array = [scene_path]
 
-	var dependencies = _get_all_dependencies_recursive(scene_path, visited)
+	var dependencies: Array = _get_all_dependencies_recursive(scene_path, visited)
 	all_files.append_array(dependencies)
 
 	all_files = Array(visited.keys())
 
-	print("Total files found: %d" % all_files.size())
+	print("[SurfsUpSDK] Total dependencies found: %d files" % all_files.size())
 
-	var included_files = 0
+	print("[SurfsUpSDK] Packing files...")
+	var included_files: int = 0
+	var skipped_files: int = 0
+
 	for file_path in all_files:
 		if file_path != "" and FileAccess.file_exists(file_path):
 			# Only include .import files and files in .godot directory to reduce size
@@ -268,18 +327,36 @@ func _export_current_scene_to_pck():
 				# Always include scene and resource files
 				packer.add_file(file_path, file_path)
 				included_files += 1
-			elif file_path.ends_with(".gdshader"):
-				# Include shader files
+			elif file_path.ends_with(".gdshader") or file_path.ends_with(".gd"):
+				# Include shader and script files
 				packer.add_file(file_path, file_path)
 				included_files += 1
 			elif file_path.ends_with(".wav") or file_path.ends_with(".mp3") or file_path.ends_with(".ogg"):
 				# Include audio source files
 				packer.add_file(file_path, file_path)
 				included_files += 1
+			else:
+				skipped_files += 1
+		else:
+			skipped_files += 1
 
-	var flush_result = packer.flush()
+	print("[SurfsUpSDK] Finalizing PCK file...")
+	var flush_result: int = packer.flush()
 	if flush_result == OK:
-		print("Scene exported to PCK: %s" % pck_path)
-		print("Included %d of %d files (excluded source assets to reduce size)" % [included_files, all_files.size()])
+		var pck_file: FileAccess = FileAccess.open(pck_path, FileAccess.READ)
+		var file_size_mb: float = 0.0
+		if pck_file:
+			file_size_mb = pck_file.get_length() / 1024.0 / 1024.0
+			pck_file.close()
+
+		print("[SurfsUpSDK] ✓ Export successful!")
+		print("[SurfsUpSDK] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+		print("[SurfsUpSDK] Location: %s" % pck_path)
+		print("[SurfsUpSDK] Map Name: %s" % scene_name)
+		print("[SurfsUpSDK] File Size: %.2f MB" % file_size_mb)
+		print("[SurfsUpSDK] Files Included: %d" % included_files)
+		print("[SurfsUpSDK] Files Skipped: %d (source assets excluded)" % skipped_files)
+		print("[SurfsUpSDK] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+		print("[SurfsUpSDK] To test: Launch SurfsUp, press ~ and type: map %s" % scene_name)
 	else:
-		push_error("Failed to write PCK file.")
+		push_error("[SurfsUpSDK] Failed to write PCK file. Error code: %d" % flush_result)
