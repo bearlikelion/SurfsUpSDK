@@ -268,6 +268,10 @@ func _export_current_scene_to_pck():
 				# Always include scene and resource files
 				packer.add_file(file_path, file_path)
 				included_files += 1
+			elif file_path.ends_with(".gdshader"):
+				# Include shader files
+				packer.add_file(file_path, file_path)
+				included_files += 1
 			elif file_path.ends_with(".wav") or file_path.ends_with(".mp3") or file_path.ends_with(".ogg"):
 				# Include audio source files
 				packer.add_file(file_path, file_path)

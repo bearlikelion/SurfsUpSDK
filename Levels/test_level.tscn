@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c28xui7gwdn5"]
+[gd_scene load_steps=13 format=3 uid="uid://c28xui7gwdn5"]
 
 [ext_resource type="Script" uid="uid://bppvp3cpwok03" path="res://Scripts/Levels/level_type.gd" id="1_7e6fp"]
 [ext_resource type="Texture2D" uid="uid://bamm1ye3a1t3r" path="res://Assets/Images/Levels/default.png" id="1_i4ak4"]
 [ext_resource type="AudioStream" uid="uid://cxeiwulo55seh" path="res://Assets/Audio/Music/SurfUp Theme.ogg" id="1_ub4j8"]
-[ext_resource type="Theme" uid="uid://cncr6mw1ul60l" path="res://surfsup.tres" id="2_3158n"]
-[ext_resource type="PackedScene" uid="uid://2ekgf8ai0k3n" path="res://Levels/Utilities/starting_platform.tscn" id="4_7e6fp"]
-[ext_resource type="Script" uid="uid://dm4m136k5a0al" path="res://hack_test.gd" id="5_pvdih"]
+[ext_resource type="Theme" path="res://surfsup.tres" id="2_3158n"]
+[ext_resource type="PackedScene" path="res://Levels/Utilities/starting_platform.tscn" id="4_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://cyb2sevvjhecd" path="res://Levels/Ramps/Parts/down_90_1024.glb" id="8_7e6fp"]
-[ext_resource type="PackedScene" uid="uid://cgymwi8dogwyp" path="res://Levels/Utilities/kill_box.tscn" id="9_4t6x8"]
+[ext_resource type="PackedScene" path="res://Levels/Utilities/kill_box.tscn" id="9_4t6x8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i4ak4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -86,7 +85,6 @@ vertical_alignment = 2
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.4, 1, 0.4)
 
 [node name="Players" type="Node" parent="."]
-script = ExtResource("5_pvdih")
 
 [node name="Level" type="Node" parent="."]
 
