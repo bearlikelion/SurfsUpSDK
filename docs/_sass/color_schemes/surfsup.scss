@@ -1,0 +1,46 @@
+// SurfsUp custom color scheme for just-the-docs
+// Matching the SurfsUp website design
+
+// Import base dark scheme as foundation
+@import "./color_schemes/dark";
+
+// Primary brand colors - blue tones matching SurfsUp
+$blue-000: #7dd3fc; // light blue
+$blue-100: #38bdf8; // sky blue
+$blue-200: #0ea5e9; // bright blue
+$blue-300: #0284c7; // primary blue
+$blue-400: #0369a1; // deep blue
+
+// Override primary link and accent colors with SurfsUp blue
+$link-color: $blue-200;
+$btn-primary-color: $blue-300;
+$base-button-color: $blue-300;
+
+// Code and syntax highlighting with blue accents
+$code-background-color: #1e293b;
+$code-linenumber-color: #64748b;
+
+// Navigation and UI elements
+$nav-child-link-color: #cbd5e1;
+$sidebar-color: #0f172a;
+$search-background-color: #1e293b;
+$search-result-preview-color: #94a3b8;
+
+// Body and content
+$body-background-color: #0f172a;
+$body-heading-color: #f1f5f9;
+$body-text-color: #cbd5e1;
+$border-color: #334155;
+
+// Feedback colors
+$feedback-color: $blue-200;
+$label-primary: $blue-300;
+
+// Table styles
+$table-background-color: #1e293b;
+$table-header-background-color: #334155;
+
+// Focus and active states
+$focus-color: $blue-200;
+$nav-list-link-active-color: $blue-100;
+$nav-list-link-active-bg: rgba(14, 165, 233, 0.1);
