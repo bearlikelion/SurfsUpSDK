@@ -35,6 +35,19 @@ a {
   }
 }
 
+// Navigation hover states with gold accent
+.nav-list .nav-list-item > a:hover,
+.nav-list .nav-list-item > a:focus {
+  color: #F2B441 !important;
+}
+
+// Active/current navigation items with gold
+.nav-list .nav-list-item > a.active,
+.nav-list .nav-list-item > a[aria-current="page"] {
+  color: #F2B441 !important;
+  font-weight: 600;
+}
+
 // Smooth scrolling
 html {
   scroll-behavior: smooth;

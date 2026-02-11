@@ -26,6 +26,9 @@ $sidebar-color: #0f172a;
 $search-background-color: #1e293b;
 $search-result-preview-color: #94a3b8;
 
+// Gold accent for better visibility
+$gold-accent: #F2B441;
+
 // Body and content
 $body-background-color: #0f172a;
 $body-heading-color: #f1f5f9;
@@ -40,7 +43,7 @@ $label-primary: $blue-300;
 $table-background-color: #1e293b;
 $table-header-background-color: #334155;
 
-// Focus and active states
-$focus-color: $blue-200;
-$nav-list-link-active-color: $blue-100;
-$nav-list-link-active-bg: rgba(14, 165, 233, 0.1);
+// Focus and active states - using SurfsUp gold for better contrast
+$focus-color: #F2B441;
+$nav-list-link-active-color: #F2B441;
+$nav-list-link-active-bg: rgba(242, 180, 65, 0.1);
