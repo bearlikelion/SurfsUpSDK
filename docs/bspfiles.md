@@ -1,6 +1,7 @@
 ---
 title: "BSP Files"
 permalink: /bsp/
+nav_order: 6
 ---
 
 # Porting BSP Files

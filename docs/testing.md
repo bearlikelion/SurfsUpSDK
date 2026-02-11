@@ -1,6 +1,7 @@
 ---
 title: "Testing In-Game"
 permalink: /testing/
+nav_order: 5
 ---
 
 # Testing the Map in Game

@@ -1,6 +1,7 @@
 ---
 title: "Ramp Prefabs"
 permalink: /prefabs/
+nav_order: 2
 ---
 
 # Using the Ramp Prefabs

@@ -1,6 +1,7 @@
 ---
 title: "Texturing"
 permalink: /texturing/
+nav_order: 3
 ---
 
 # Texturing the Ramps
