@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c4ddkereusm8g"
+path.s3tc="res://.godot/imported/low_poly_stylized_clover_grass_0.png-b736e6526e48a6fd3204bad94afd1176.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "0f951038c29476f6ea8e27208a03bc1a"
+}
+
+[deps]
+
+source_file="res://Assets/Textures/Custom Textures/Surf_Variable Ramps/Random Models/low_poly_stylized_clover_grass_0.png"
+dest_files=["res://.godot/imported/low_poly_stylized_clover_grass_0.png-b736e6526e48a6fd3204bad94afd1176.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=1.0
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=0
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=false
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

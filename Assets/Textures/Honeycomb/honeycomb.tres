@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bu4bupgjj7oh3"]
+
+[ext_resource type="Texture2D" uid="uid://c4d40qxbwgrra" path="res://Assets/Textures/Honeycomb/others_0007_color_1k.jpg" id="1_am8xs"]
+[ext_resource type="Texture2D" uid="uid://dj16g3pjcypks" path="res://Assets/Textures/Honeycomb/others_0007_ao_1k.jpg" id="2_waex3"]
+[ext_resource type="Texture2D" uid="uid://c0ndthnro22t5" path="res://Assets/Textures/Honeycomb/others_0007_height_1k.png" id="3_f1bnn"]
+[ext_resource type="Texture2D" uid="uid://bu826ofnify7s" path="res://Assets/Textures/Honeycomb/others_0007_normal_opengl_1k.png" id="4_xwc86"]
+[ext_resource type="Texture2D" uid="uid://c4ggap78fgvtx" path="res://Assets/Textures/Honeycomb/others_0007_roughness_1k.jpg" id="5_76cho"]
+
+[resource]
+albedo_texture = ExtResource("1_am8xs")
+roughness_texture = ExtResource("5_76cho")
+normal_enabled = true
+normal_texture = ExtResource("4_xwc86")
+ao_enabled = true
+ao_texture = ExtResource("2_waex3")
+heightmap_scale = 6.772
+heightmap_texture = ExtResource("3_f1bnn")

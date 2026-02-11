@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://h845dyim3rkv"]
+
+[ext_resource type="Texture2D" uid="uid://de16vtogr22e0" path="res://Assets/Textures/Ivory/Ivory002A_1K-JPG_Color.jpg" id="1_bbhbh"]
+[ext_resource type="Texture2D" uid="uid://dbqj8ruv5c7yy" path="res://Assets/Textures/Ivory/Ivory002A_1K-JPG_NormalGL.jpg" id="2_6seba"]
+[ext_resource type="Texture2D" uid="uid://d3yulnt1jwt0" path="res://Assets/Textures/Ivory/Ivory002A_1K-JPG_Roughness.jpg" id="3_33f58"]
+
+[resource]
+albedo_color = Color(1, 0, 0.0176821, 1)
+albedo_texture = ExtResource("1_bbhbh")
+roughness_texture = ExtResource("3_33f58")
+normal_enabled = true
+normal_texture = ExtResource("2_6seba")
+ao_enabled = true
+ao_light_affect = 1.0
+backlight_enabled = true
+backlight = Color(0.23778, 0.23778, 0.23778, 1)

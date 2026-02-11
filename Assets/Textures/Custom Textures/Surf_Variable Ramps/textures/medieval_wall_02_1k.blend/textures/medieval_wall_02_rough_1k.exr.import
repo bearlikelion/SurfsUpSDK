@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://4hjrbjs45loe"
+path.bptc="res://.godot/imported/medieval_wall_02_rough_1k.exr-73f5ef1eada8401cb31772796e97e47a.bptc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Assets/Textures/Custom Textures/Surf_Variable Ramps/textures/medieval_wall_02_1k.blend/textures/medieval_wall_02_rough_1k.exr"
+dest_files=["res://.godot/imported/medieval_wall_02_rough_1k.exr-73f5ef1eada8401cb31772796e97e47a.bptc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=true
+compress/lossy_quality=1.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=false
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

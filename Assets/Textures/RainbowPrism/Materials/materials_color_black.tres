@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cms7p4j5fd1rc"]
+
+[ext_resource type="Texture2D" uid="uid://3s0fswafl8by" path="res://Assets/Textures/RainbowPrism/Materials/nightskycolor.png" id="1_55rfb"]
+
+[resource]
+resource_name = "materials/color/black"
+shading_mode = 0
+albedo_texture = ExtResource("1_55rfb")
+uv1_scale = Vector3(0.001, 0.001, 0.001)
+uv1_world_triplanar = true

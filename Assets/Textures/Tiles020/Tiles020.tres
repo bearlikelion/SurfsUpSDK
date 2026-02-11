@@ -1,15 +1,17 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://hvphyuna7m88"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cuiwuiyoicuro"]
 
-[ext_resource type="Texture2D" uid="uid://b1tqelu6sl61j" path="res://Assets/Textures/Tiles020/Tiles020_1K-JPG_Color.jpg" id="1_ytjjv"]
-[ext_resource type="Texture2D" uid="uid://b1j2t3gsnxrbd" path="res://Assets/Textures/Tiles020/Tiles020_1K-JPG_NormalGL.jpg" id="2_jifiu"]
-[ext_resource type="Texture2D" uid="uid://b6vf2brgylpp7" path="res://Assets/Textures/Tiles020/Tiles020_1K-JPG_Roughness.jpg" id="3_sycyk"]
+[ext_resource type="Texture2D" uid="uid://b1tqelu6sl61j" path="res://Assets/Textures/Tiles020/Tiles020_1K-JPG_Color.jpg" id="1"]
+[ext_resource type="Texture2D" uid="uid://b1j2t3gsnxrbd" path="res://Assets/Textures/Tiles020/Tiles020_1K-JPG_NormalGL.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://b6vf2brgylpp7" path="res://Assets/Textures/Tiles020/Tiles020_1K-JPG_Roughness.jpg" id="3"]
 
 [resource]
-albedo_texture = ExtResource("1_ytjjv")
-roughness_texture = ExtResource("3_sycyk")
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("3")
 normal_enabled = true
-normal_texture = ExtResource("2_jifiu")
+normal_texture = ExtResource("2")
 ao_enabled = true
 ao_light_affect = 1.0
 backlight_enabled = true
 backlight = Color(0.23778, 0.23778, 0.23778, 1)
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_triplanar = true

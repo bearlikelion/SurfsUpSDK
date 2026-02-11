@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://gov06tocrtch"]
+
+[ext_resource type="Texture2D" uid="uid://2rp1ekx0wflj" path="res://Assets/Textures/Aurora/aurora.png" id="1_mb5je"]
+
+[resource]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.784314)
+albedo_texture = ExtResource("1_mb5je")

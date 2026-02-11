@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bwt6gphuu3sg3" path="res://Assets/Textures/DampSand/damp_sand_rough_1k.jpg" id="3_0lr54"]
 
 [resource]
-albedo_color = Color(0.199881, 0.150385, 0.0792171, 1)
+albedo_color = Color(0.472656, 0.355614, 0.187324, 1)
 roughness_texture = ExtResource("3_0lr54")
 normal_enabled = true
+normal_scale = 1.5
 normal_texture = ExtResource("2_epweh")
 ao_enabled = true
+ao_light_affect = 1.0
 ao_texture = ExtResource("1_svwv8")
-uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_scale = Vector3(0.5, 0.5, 0.5)

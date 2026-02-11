@@ -1,14 +1,16 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b1vmojfv6o1nu"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c10v8i28mbnwy"]
 
-[ext_resource type="Texture2D" uid="uid://dbmtrva1oa3ct" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_Color.jpg" id="1_k6rfc"]
-[ext_resource type="Texture2D" uid="uid://dcrk48sa13tc8" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_AmbientOcclusion.jpg" id="2_pocwx"]
-[ext_resource type="Texture2D" uid="uid://bh2djb1d30nen" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_NormalGL.jpg" id="3_2435j"]
-[ext_resource type="Texture2D" uid="uid://f3n3m0h1mpvg" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_Roughness.jpg" id="4_aai32"]
+[ext_resource type="Texture2D" uid="uid://d36ilnnx6fpos" path="res://Assets/Textures/Tiles076/Tiles076_1K-JPG_Roughness.jpg" id="1"]
+[ext_resource type="Texture2D" uid="uid://dcrk48sa13tc8" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_AmbientOcclusion.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://bh2djb1d30nen" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_NormalGL.jpg" id="3"]
+[ext_resource type="Texture2D" uid="uid://f3n3m0h1mpvg" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_Roughness.jpg" id="4"]
 
 [resource]
-albedo_texture = ExtResource("1_k6rfc")
-roughness_texture = ExtResource("4_aai32")
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("4")
 normal_enabled = true
-normal_texture = ExtResource("3_2435j")
+normal_texture = ExtResource("3")
 ao_enabled = true
-ao_texture = ExtResource("2_pocwx")
+ao_texture = ExtResource("2")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_triplanar = true

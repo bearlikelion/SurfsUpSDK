@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2w6ppha1tsu2" path="res://Assets/Textures/Water002/Water_002_ROUGH.jpg" id="3_r7jes"]
 
 [resource]
-albedo_color = Color(0.395833, 0.395833, 0.395833, 1)
+albedo_color = Color(0.26, 0.26, 0.26, 1)
 albedo_texture = ExtResource("1_636c5")
 roughness_texture = ExtResource("3_r7jes")
 normal_enabled = true

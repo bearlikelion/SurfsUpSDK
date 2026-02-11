@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dpakjvtj185fc"]
+
+[ext_resource type="Texture2D" uid="uid://dbmtrva1oa3ct" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_Color.jpg" id="1_k6rfc"]
+[ext_resource type="Texture2D" uid="uid://dcrk48sa13tc8" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_AmbientOcclusion.jpg" id="2_pocwx"]
+[ext_resource type="Texture2D" uid="uid://bh2djb1d30nen" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_NormalGL.jpg" id="3_2435j"]
+[ext_resource type="Texture2D" uid="uid://f3n3m0h1mpvg" path="res://Assets/Textures/Tiles132C/Tiles132C_1K-JPG_Roughness.jpg" id="4_aai32"]
+
+[resource]
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_k6rfc")
+roughness_texture = ExtResource("4_aai32")
+normal_enabled = true
+normal_texture = ExtResource("3_2435j")
+ao_enabled = true
+ao_texture = ExtResource("2_pocwx")

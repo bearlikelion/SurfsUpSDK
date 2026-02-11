@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=4]
+
+[ext_resource type="Shader" uid="uid://bp56kwuoh7vkw" path="res://Levels/Effects/Shaders/grid-texture.gdshader" id="1"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/world_uv = true
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(0.5, 5)
+shader_parameter/preset_color = 4
+shader_parameter/base_color = Color(1, 0.4, 0, 1)
+shader_parameter/metalic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/grid_scale = 0.495
+shader_parameter/grid_width = 0.1
+shader_parameter/grid_color = Color(0, 0, 0, 1)
+shader_parameter/inside_scale = 10.0
+shader_parameter/inside_width = 1.0
+shader_parameter/inside_color = Color(1, 0.380392, 0, 1)
+shader_parameter/checkered = false
+shader_parameter/sub_checkered_grid = true
+shader_parameter/checkered_color = Color(0, 0, 0, 1)
+shader_parameter/checkered_blend_color = 1.0
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_texture = null
+shader_parameter/albedo_alpha = 1.0
